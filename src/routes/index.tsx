@@ -1,166 +1,119 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 
 export const Route = createFileRoute("/")({
-  component: CarSelectionPage,
+  component: DivineManifestationPage,
 });
 
-type CarId = "compact" | "sedan" | "suv";
-
-const OPTIONS: Array<{ id: CarId; label: string; hint: string }> = [
-  {
-    id: "compact",
-    label: "A compact hatchback",
-    hint: "Ágil na cidade e fácil de estacionar.",
-  },
-  {
-    id: "sedan",
-    label: "A comfortable sedan",
-    hint: "Conforto e espaço para viagens longas.",
-  },
-  {
-    id: "suv",
-    label: "A spacious SUV",
-    hint: "Porta-malas grande e posição de dirigir elevada.",
-  },
-];
-
-function HatchbackArt() {
-  return (
-    <svg
-      viewBox="0 0 400 180"
-      role="img"
-      aria-label="Ilustração de um hatchback compacto"
-      className="h-auto w-full"
-    >
-      <ellipse cx="200" cy="154" rx="145" ry="9" className="fill-slate-900/10" />
-      <path
-        d="M40 118 V106 c0-8 6-14 14-16 l50-11 l24-24 c9-9 21-14 34-14 h44 c13 0 25 5 33 14 l28 30 l40 12 c10 3 16 9 16 17 v4 c0 6-4 10-10 10 H50 c-6 0-10-4-10-10 Z"
-        className="fill-sky-500"
-      />
-      <path d="M132 76 L150 54 H170 V76 Z" className="fill-slate-100" />
-      <path d="M180 54 H236 L258 76 H180 Z" className="fill-slate-100" />
-      <circle cx="108" cy="126" r="24" className="fill-slate-900" />
-      <circle cx="108" cy="126" r="10" className="fill-slate-300" />
-      <circle cx="288" cy="126" r="24" className="fill-slate-900" />
-      <circle cx="288" cy="126" r="10" className="fill-slate-300" />
-    </svg>
-  );
-}
-
-function SedanArt() {
-  return (
-    <svg
-      viewBox="0 0 400 180"
-      role="img"
-      aria-label="Ilustração de um sedã"
-      className="h-auto w-full"
-    >
-      <ellipse cx="200" cy="154" rx="150" ry="9" className="fill-slate-900/10" />
-      <path
-        d="M40 118 V104 c0-8 6-14 14-16 l52-11 l26-25 c9-9 21-14 34-14 h62 c13 0 25 5 34 14 l26 24 l34 11 c9 3 14 9 14 17 v12 c0 6-4 10-10 10 H50 c-6 0-10-4-10-10 Z"
-        className="fill-slate-700"
-      />
-      <path d="M138 74 L164 48 H208 V74 Z" className="fill-slate-100" />
-      <path d="M220 48 H258 L274 74 H220 Z" className="fill-slate-100" />
-      <rect x="196" y="96" width="28" height="6" rx="3" className="fill-slate-300" />
-      <rect x="242" y="96" width="28" height="6" rx="3" className="fill-slate-300" />
-      <circle cx="112" cy="126" r="25" className="fill-slate-900" />
-      <circle cx="112" cy="126" r="10" className="fill-slate-300" />
-      <circle cx="302" cy="126" r="25" className="fill-slate-900" />
-      <circle cx="302" cy="126" r="10" className="fill-slate-300" />
-    </svg>
-  );
-}
-
-function SuvArt() {
-  return (
-    <svg
-      viewBox="0 0 400 180"
-      role="img"
-      aria-label="Ilustração de um SUV espaçoso"
-      className="h-auto w-full"
-    >
-      <ellipse cx="200" cy="154" rx="148" ry="9" className="fill-slate-900/10" />
-      <path
-        d="M40 118 V94 c0-8 6-14 14-16 l48-10 l16-24 c7-10 18-16 30-16 h66 c14 0 26 6 34 16 l30 34 l32 10 c9 3 14 9 14 17 v13 c0 6-4 10-10 10 H50 c-6 0-10-4-10-10 Z"
-        className="fill-emerald-600"
-      />
-      <path d="M126 64 L138 36 H176 V64 Z" className="fill-slate-100" />
-      <path d="M188 36 H214 C224 36 232 41 238 50 L248 64 H188 Z" className="fill-slate-100" />
-      <rect x="196" y="92" width="30" height="6" rx="3" className="fill-slate-300" />
-      <rect x="244" y="92" width="30" height="6" rx="3" className="fill-slate-300" />
-      <circle cx="112" cy="126" r="26" className="fill-slate-900" />
-      <circle cx="112" cy="126" r="11" className="fill-slate-300" />
-      <circle cx="300" cy="126" r="26" className="fill-slate-900" />
-      <circle cx="300" cy="126" r="11" className="fill-slate-300" />
-    </svg>
-  );
-}
-
-function CarArt({ id }: { id: CarId }) {
-  if (id === "compact") return <HatchbackArt />;
-  if (id === "suv") return <SuvArt />;
-  return <SedanArt />;
-}
-
-function CarSelectionPage() {
-  const [selected, setSelected] = useState<CarId>("sedan");
-  const current = OPTIONS.find((option) => option.id === selected) ?? OPTIONS[1];
-
+function DivineManifestationPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-16">
-        <header className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Escolha seu carro
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Qual carro combina com você?
-          </h1>
-          <p className="max-w-2xl text-muted-foreground">
-            Selecione uma opção ao lado para ver o veículo correspondente.
-          </p>
+      <div className="bg-[#faf7f2] text-[#302b38]">
+        <header className="border-b border-[#e5ded5]">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-6">
+            <a href="#" aria-label="Plan Faith home" className="font-serif text-2xl tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#695181]">
+              plan<span className="italic text-[#795b90]">faith</span><span className="ml-1 text-[#a38356]">✦</span>
+            </a>
+            <a href="#reflection" className="text-sm font-medium text-[#695181] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
+              A moment for you <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
-          <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <div className="w-full max-w-md">
-              <CarArt id={selected} />
+        <main>
+          <section aria-labelledby="hero-title" className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-16 md:py-24">
+            <div>
+              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.24em] text-[#795b90]">Faith. Intention. Possibility.</p>
+              <h1 id="hero-title" className="font-serif text-5xl leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
+                Your Divine<br />
+                <span className="italic text-[#795b90]">Manifestation</span><br />
+                Script
+              </h1>
+              <p className="mt-7 max-w-md text-lg leading-relaxed text-[#716877]">
+                A quiet moment to reconnect with your faith, put your hopes into words, and approach your next chapter with intention.
+              </p>
+              <a href="#reflection" className="mt-9 inline-flex min-h-14 items-center justify-center gap-5 rounded-full bg-[#695181] px-8 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#695181]/10 transition hover:bg-[#523d69] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#695181]">
+                Explore the script <span aria-hidden="true">→</span>
+              </a>
+              <p className="mt-4 text-xs tracking-wide text-[#716877]">Make space for reflection. Move forward with faith.</p>
+            </div>
+
+            <div aria-hidden="true" className="relative flex min-h-[410px] items-center justify-center overflow-hidden rounded-t-full bg-[#eee7ef] px-9 py-14 sm:min-h-[510px]">
+              <div className="absolute inset-8 rounded-t-full border border-white/70" />
+              <span className="absolute right-9 top-20 text-4xl text-[#ad8d60]">✧</span>
+              <span className="absolute bottom-14 left-8 text-3xl text-[#ad8d60]">✦</span>
+              <div className="relative w-full max-w-[270px] rotate-[-6deg] rounded-r-lg border border-[#e5dbca] border-l-[#d7c8b1] bg-[#fffcf5] px-7 py-12 text-center shadow-[16px_22px_40px_-14px_rgba(60,40,70,0.35)] sm:py-16">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-[#877557]">Plan Faith</p>
+                <div className="mx-auto my-8 flex h-16 w-16 items-center justify-center rounded-full border border-[#c7b38e] text-3xl text-[#ad8d60]">✦</div>
+                <p className="font-serif text-3xl leading-tight">Your Divine<br /><span className="italic text-[#795b90]">Manifestation</span><br />Script</p>
+                <div className="mx-auto my-7 h-px w-10 bg-[#c7b38e]" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[#877557]">A moment of intention</p>
+              </div>
+            </div>
+          </section>
+
+          <div className="border-y border-[#e5ded5] bg-[#f2ece4] px-6 py-5">
+            <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-4 text-xs font-medium uppercase tracking-[0.16em] text-[#716877]">
+              <span>Rooted in faith</span><span aria-hidden="true" className="text-[#ad8d60]">✦</span><span>Guided by intention</span><span aria-hidden="true" className="text-[#ad8d60]">✦</span><span>A space to reflect</span>
             </div>
           </div>
 
-          <div className="space-y-3" role="radiogroup" aria-label="Categorias de carro">
-            {OPTIONS.map((option) => {
-              const active = option.id === selected;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => setSelected(option.id)}
-                  className={
-                    "w-full rounded-xl border p-4 text-left transition " +
-                    (active
-                      ? "border-primary bg-primary/5 ring-1 ring-primary"
-                      : "border-border bg-card hover:border-primary/40 hover:bg-accent/40")
-                  }
-                >
-                  <span className="block font-semibold">{option.label}</span>
-                  <span className="mt-1 block text-sm text-muted-foreground">
-                    {option.hint}
-                  </span>
-                </button>
-              );
-            })}
-            <p className="pt-2 text-sm text-muted-foreground" aria-live="polite">
-              Selecionado:{" "}
-              <span className="font-medium text-foreground">{current.label}</span>
-            </p>
+          <section aria-labelledby="intention-title" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#795b90]">Begin where you are</p>
+              <h2 id="intention-title" className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">A little stillness.<br /><span className="italic text-[#795b90]">A more intentional tomorrow.</span></h2>
+              <p className="mt-6 leading-relaxed text-[#716877]">You don’t need to have every answer. Give yourself room to listen, acknowledge what matters, and choose one meaningful step forward.</p>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                { number: "01", title: "Pause and reconnect", text: "Find a comfortable place, take a slow breath, and let this moment be enough." },
+                { number: "02", title: "Name your intention", text: "Reflect on what you hope to nurture in your life and why it matters to you." },
+                { number: "03", title: "Take a gentle step", text: "Choose one small action that aligns with your values and the intention you’ve set." },
+              ].map((item) => (
+                <article key={item.number} className="rounded-2xl border border-[#e5ded5] bg-white/50 p-8">
+                  <span className="font-serif text-3xl italic text-[#ab946f]">{item.number}</span>
+                  <h3 className="mt-6 font-serif text-2xl">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#716877]">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="reflection" aria-labelledby="reflection-title" className="scroll-mt-8 bg-[#eee7ef] px-6 py-20 md:py-24">
+            <div className="mx-auto max-w-3xl text-center">
+              <span aria-hidden="true" className="text-3xl text-[#ad8d60]">✦</span>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-[#795b90]">An example reflection</p>
+              <h2 id="reflection-title" className="mt-4 font-serif text-4xl sm:text-5xl">Words to begin with</h2>
+              <blockquote className="mt-9 font-serif text-2xl italic leading-relaxed text-[#62516e] sm:text-3xl sm:leading-relaxed">
+                “Today, I make room for gratitude, clarity, and courage. I honor the hopes in my heart while staying present to the life before me. May my next step be guided by faith, grounded in kindness, and open to possibility.”
+              </blockquote>
+              <p className="mx-auto mt-8 max-w-lg text-sm leading-7 text-[#716877]">Read slowly. Notice what resonates. You can adapt these words to your own beliefs, experiences, and intentions.</p>
+            </div>
+          </section>
+
+          <section aria-labelledby="questions-title" className="mx-auto max-w-3xl px-6 py-20">
+            <h2 id="questions-title" className="mb-9 text-center font-serif text-4xl">A few gentle reminders</h2>
+            {[
+              { question: "How can I use this reflection?", answer: "Read it at a time that feels comfortable. You might follow it with a few lines in a journal or a quiet moment to consider your next step." },
+              { question: "Do I need to use these exact words?", answer: "No. Let the reflection be a starting point, and choose language that feels meaningful and authentic to you." },
+              { question: "Does manifestation guarantee a particular outcome?", answer: "No. Reflection can help you explore your intentions, but it does not guarantee outcomes or replace practical action or professional advice." },
+            ].map((item) => (
+              <details key={item.question} className="group border-b border-[#e5ded5] py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 rounded-sm text-base font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#695181] [&::-webkit-details-marker]:hidden">
+                  {item.question}<span aria-hidden="true" className="text-xl text-[#795b90] transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 pr-8 text-sm leading-7 text-[#716877]">{item.answer}</p>
+              </details>
+            ))}
+          </section>
+        </main>
+
+        <footer className="border-t border-[#e5ded5] px-6 py-8">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+            <p className="font-serif text-xl">plan<span className="italic text-[#795b90]">faith</span></p>
+            <p className="text-xs leading-relaxed text-[#716877]">A space for faith, intention, and personal reflection.</p>
           </div>
-        </div>
-      </main>
+        </footer>
+      </div>
     </div>
   );
 }
