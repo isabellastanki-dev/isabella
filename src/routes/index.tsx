@@ -84,7 +84,7 @@ function CarSelectionPage() {
         </fieldset>
         <button
           type="button"
-          onClick={() => window.location.assign(`/offer${window.location.search}`)}
+          onClick={() => window.location.assign("https://planfaith.com/offer?utm_source=FB&utm_medium=CJ-156%7C52571356760376&utm_campaign=BIDCAP-55%7C52571356760176&utm_content=ARCANJO-C%7C52571360932776&utm_term=Facebook_Mobile_Feed&fbclid=IwdGRjcAUEN31wZG9mAWV4dG4DYWVIATAAYWRpZAAAL9A5V9VAc3JOYwZhcHBfaWQMMzUwNjg1NTMxNz%7C4AAEe1kJCDSoH2ZPhkQR9MiTcQ-SKqC2Mu3EKPT%7CGQdCj7acX2leZnEv4U_alo_aem_2GJeWGjnFdeZktBpJAV0Tg&utm_id=52571356760176")}
           className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:w-auto"
         >
           Reveal my plan
