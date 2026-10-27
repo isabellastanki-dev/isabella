@@ -82,6 +82,13 @@ function CarSelectionPage() {
             </label>
           ))}
         </fieldset>
+        <button
+          type="button"
+          onClick={() => window.location.assign(`/offer${window.location.search}`)}
+          className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:w-auto"
+        >
+          Reveal my plan
+        </button>
       </section>
     </main>
   );
