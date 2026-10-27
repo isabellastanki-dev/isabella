@@ -5,6 +5,8 @@ export const Route = createFileRoute("/")({
   component: CarSelectionPage,
 });
 
+const SEDAN_IMAGE = "/uploads/colado-20261027-204430.png";
+
 const cars = [
   { id: "hatchback", label: "A compact hatchback" },
   { id: "sedan", label: "A comfortable sedan" },
@@ -70,11 +72,11 @@ function CarSelectionPage() {
         <figure className="mt-10 rounded-3xl border border-border bg-card px-4 py-8 shadow-sm sm:px-10">
           {selected === "sedan" ? (
             <img
-              src="/uploads/colado-20261027-204430.png"
+              src={SEDAN_IMAGE}
               alt="A comfortable sedan"
-              width={236}
-              height={420}
-              className="mx-auto h-auto max-h-[420px] max-w-full rounded-xl object-contain"
+              loading="eager"
+              decoding="async"
+              className="mx-auto block h-auto w-auto max-h-[70vh] max-w-full rounded-xl object-contain"
             />
           ) : (
             <CarIllustration type={selected} label={car.label} />
