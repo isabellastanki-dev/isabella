@@ -68,7 +68,17 @@ function CarSelectionPage() {
         <h1 id="car-title" className="text-3xl font-bold tracking-tight sm:text-5xl">Which car would you choose?</h1>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">Select the car that feels right for you.</p>
         <figure className="mt-10 rounded-3xl border border-border bg-card px-4 py-8 shadow-sm sm:px-10">
-          <CarIllustration type={selected} label={car.label} />
+          {selected === "sedan" ? (
+            <img
+              src="/uploads/colado-20261027-204430.png"
+              alt="A comfortable sedan"
+              width={236}
+              height={420}
+              className="mx-auto h-auto max-h-[420px] max-w-full rounded-xl object-contain"
+            />
+          ) : (
+            <CarIllustration type={selected} label={car.label} />
+          )}
           <figcaption aria-live="polite" className="mt-4 text-xl font-semibold text-card-foreground">{car.label}</figcaption>
         </figure>
         <fieldset className="mt-8 grid gap-4 sm:grid-cols-3">
